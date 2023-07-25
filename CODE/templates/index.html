@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deployment Tutorial 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+ <div class="login">
+
+  <a href="https://public.tableau.com/app/profile/kane.ren/viz/Dashboard_16499104710950/Dashboard1?publish=yes" target="_blank" class="button" style="color:red;">Link to Historical Accident Dashboard </a><br>
+  <a href="https://public.tableau.com/app/profile/kane.ren/viz/NYmap_16490213840450/NYPredictionMap" target="_blank" class="button" style="color:red;">Link to Severe Accident Probability Heatmap</a>
+
+
+<body style="background: #000;">
+
+    <h3>Team #108 Project</h3>
+	<h3>Accident Severity Prediction</h3>
+	<h6>Enter a zipcode to predict the probability of severity if a traffic accident happen base on live weather data</h6>
+	<h6>Severity 1: Low Impact<br>Severity 2: Minor<br>Severity 3: Moderate<br>Severity 4: Serious</h6>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="zip" placeholder="enter zip code" required="required" />
+        <!-- <input type="text" name="sales in first month" placeholder="sales in first month" required="required" />
+		<input type="text" name="sales in second month" placeholder="sales in second month" required="required" /> -->
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict severity if accident happens</button>
+    </form>
+
+   <br>
+
+   {{ prediction_text|safe }}
+   <br>
+    </div>
+
+
+
+</body>
+</html>
